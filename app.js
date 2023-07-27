@@ -6,7 +6,7 @@ const xss = require('xss-clean');
 const cors = require('cors');
 
 const userRouter = require('./routes/userRoutes');
-// const handicraftRouter = require('./routes/handicraftRoutes');
+const kegiatanRouter = require('./routes/kegiatanRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errController');
 const User = require('./models/userModel');
@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/v1/users', userRouter);
-// app.use('/api/v1/handicrafts', handicraftRouter);
+app.use('/api/v1/kegiatan', kegiatanRouter);
 
 app.use('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
